@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorldCup.DataLayer\WorldCup.DataLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\WorldCup.DataLayer\Data\**" LinkBase="Data" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\WorldCup.DataLayer\Config\dataconfig.txt" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\WorldCup.DataLayer\PlayerImages\**" Link="PlayerImages\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PdfSharp" Version="6.2.4" />
+  </ItemGroup>
+
+</Project>

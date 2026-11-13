@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorldCup.DataLayer\WorldCup.DataLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\WorldCup.DataLayer\Data\**" LinkBase="Data" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\WorldCup.DataLayer\Config\dataconfig.txt"
+             Link="Config\dataconfig.txt"
+             CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\WorldCup.DataLayer\PlayerImages\**"
+             Link="PlayerImages\%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

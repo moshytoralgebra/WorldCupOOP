@@ -1,0 +1,88 @@
+<Window x:Class="WorldCup.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="World Cup"
+        MinWidth="600" MinHeight="350"
+        WindowStartupLocation="CenterScreen"
+        Loaded="MainWindow_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem x:Name="menuFile" Header="File">
+                <MenuItem x:Name="menuSettings" Header="Settings"
+                          InputGestureText="Ctrl+S"
+                          Click="menuSettings_Click"/>
+                <MenuItem x:Name="menuExit" Header="Exit"
+                          InputGestureText="Ctrl+Q"
+                          Click="menuExit_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1" Margin="12,10,12,6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                <TextBlock x:Name="lblMyTeam" Text="Your Team:" Margin="0,0,0,4"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="cbMyTeam" Grid.Column="0"
+                              SelectionChanged="cbMyTeam_SelectionChanged"/>
+                    <Button x:Name="btnMyTeamInfo" Grid.Column="1"
+                            Content="ℹ" Width="28" Margin="4,0,0,0"
+                            IsEnabled="False"
+                            Click="btnMyTeamInfo_Click"/>
+                </Grid>
+            </StackPanel>
+
+            <TextBlock x:Name="lblResult" Grid.Column="1"
+                       Text="" FontSize="24" FontWeight="Bold"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                       TextAlignment="Center" MinWidth="80" Margin="16,0"/>
+
+            <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                <TextBlock x:Name="lblOpponent" Text="Opponent:" Margin="0,0,0,4"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="cbOpponent" Grid.Column="0"
+                              SelectionChanged="cbOpponent_SelectionChanged"/>
+                    <Button x:Name="btnOpponentInfo" Grid.Column="1"
+                            Content="ℹ" Width="28" Margin="4,0,0,0"
+                            IsEnabled="False"
+                            Click="btnOpponentInfo_Click"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <ProgressBar x:Name="pbLoading" Grid.Row="2"
+                     IsIndeterminate="True" Height="4"
+                     Visibility="Collapsed" Margin="0,2,0,0"/>
+
+        <Grid Grid.Row="3">
+            <TextBlock x:Name="lblError" Text=""
+                       Foreground="Red" TextWrapping="Wrap"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Margin="16" Visibility="Collapsed"/>
+
+            <Viewbox x:Name="fieldViewbox" Stretch="Uniform" Visibility="Collapsed">
+                <Canvas x:Name="fieldCanvas" Width="500" Height="700"/>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Window>
